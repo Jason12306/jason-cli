@@ -8,6 +8,7 @@
     "jason": "./bin/cli.js"
   },
   "scripts": {
+    "dev": "bun src/bin/cli.ts",
     "build": "bun scripts/build.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix"
@@ -16,13 +17,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^5.4.1",
+    "dd": "^0.26.0",
     "fast-glob": "^3.3.3",
-    "figlet": "^1.8.0"
+    "figlet": "^1.8.0",
+    "fs-extra": "^11.3.0",
+    "inquirer": "^12.5.0",
+    "ora": "^8.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@types/bun": "^1.2.5",
     "@types/figlet": "^1.7.0",
+    "@types/fs-extra": "^11.0.4",
     "eslint": "^9.22.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"

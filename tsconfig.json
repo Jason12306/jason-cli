@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    // Enable latest features
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowJs": true,
+
+    // Best practices
+    "strict": true,
+    "skipLibCheck": true,
+
+    "outDir": "dist",
+    "moduleResolution": "bundler"
+  }
+}
