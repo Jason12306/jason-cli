@@ -6,6 +6,7 @@
       "dependencies": {
         "chalk": "^5.4.1",
         "dd": "^0.26.0",
+        "degit": "^2.8.4",
         "fast-glob": "^3.3.3",
         "figlet": "^1.8.0",
         "fs-extra": "^11.3.0",
@@ -15,6 +16,7 @@
       "devDependencies": {
         "@eslint/js": "^9.22.0",
         "@types/bun": "^1.2.5",
+        "@types/degit": "^2.8.6",
         "@types/figlet": "^1.7.0",
         "@types/fs-extra": "^11.0.4",
         "eslint": "^9.22.0",
@@ -153,6 +155,8 @@
     "@types/chai": ["@types/chai@4.3.20", "https://registry.npmmirror.com/@types/chai/-/chai-4.3.20.tgz", {}, "sha512-/pC9HAB5I/xMlc5FP77qjCnI16ChlJfW0tGa0IUcFn38VJrTV6DeZ60NU5KZBtaOZqjdpwTWohz5HU1RrhiYxQ=="],
 
     "@types/chai-subset": ["@types/chai-subset@1.3.6", "https://registry.npmmirror.com/@types/chai-subset/-/chai-subset-1.3.6.tgz", { "peerDependencies": { "@types/chai": "<5.2.0" } }, "sha512-m8lERkkQj+uek18hXOZuec3W/fCRTrU4hrnXjH3qhHy96ytuPaPiWGgu7sJb7tZxZonO75vYAjCvpe/e4VUwRw=="],
+
+    "@types/degit": ["@types/degit@2.8.6", "https://registry.npmmirror.com/@types/degit/-/degit-2.8.6.tgz", {}, "sha512-y0M7sqzsnHB6cvAeTCBPrCQNQiZe8U4qdzf8uBVmOWYap5MMTN/gB2iEqrIqFiYcsyvP74GnGD5tgsHttielFw=="],
 
     "@types/estree": ["@types/estree@1.0.6", "https://registry.npmmirror.com/@types/estree/-/estree-1.0.6.tgz", {}, ""],
 
@@ -375,6 +379,8 @@
     "define-data-property": ["define-data-property@1.1.4", "https://registry.npmmirror.com/define-data-property/-/define-data-property-1.1.4.tgz", { "dependencies": { "es-define-property": "^1.0.0", "es-errors": "^1.3.0", "gopd": "^1.0.1" } }, "sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A=="],
 
     "define-properties": ["define-properties@1.2.1", "https://registry.npmmirror.com/define-properties/-/define-properties-1.2.1.tgz", { "dependencies": { "define-data-property": "^1.0.1", "has-property-descriptors": "^1.0.0", "object-keys": "^1.1.1" } }, "sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg=="],
+
+    "degit": ["degit@2.8.4", "https://registry.npmmirror.com/degit/-/degit-2.8.4.tgz", { "bin": { "degit": "degit" } }, "sha512-vqYuzmSA5I50J882jd+AbAhQtgK6bdKUJIex1JNfEUPENCgYsxugzKVZlFyMwV4i06MmnV47/Iqi5Io86zf3Ng=="],
 
     "dependency-tree": ["dependency-tree@8.1.2", "https://registry.npmmirror.com/dependency-tree/-/dependency-tree-8.1.2.tgz", { "dependencies": { "commander": "^2.20.3", "debug": "^4.3.1", "filing-cabinet": "^3.0.1", "precinct": "^8.0.0", "typescript": "^3.9.7" }, "bin": { "dependency-tree": "bin/cli.js" } }, "sha512-c4CL1IKxkKng0oT5xrg4uNiiMVFqTGOXqHSFx7XEFdgSsp6nw3AGGruICppzJUrfad/r7GLqt26rmWU4h4j39A=="],
 

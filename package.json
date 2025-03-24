@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.4.1",
-    "dd": "^0.26.0",
+    "degit": "^2.8.4",
     "fast-glob": "^3.3.3",
     "figlet": "^1.8.0",
     "fs-extra": "^11.3.0",
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@types/bun": "^1.2.5",
+    "@types/degit": "^2.8.6",
     "@types/figlet": "^1.7.0",
     "@types/fs-extra": "^11.0.4",
     "eslint": "^9.22.0",
