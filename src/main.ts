@@ -1,5 +1,6 @@
 import inquirer from 'inquirer'
 import { copySync, mkdirSync, rmdirSync } from 'fs-extra'
+import path, { resolve } from 'node:path'
 
 export async function run() {
   const answers = await inquirer.prompt([
@@ -20,9 +21,12 @@ export async function run() {
 
     mkdirSync(answers.projectName)
 
-    copySync('templates/template-vue', answers.projectName)
+    copySync(
+      path.resolve('templates', 'template-vue'),
+      path.resolve(answers.projectName)
+    )
   } catch (error) {
     console.log('\n', error)
-    rmdirSync(answers.projectName)
+    rmdirSync(path.resolve(answers.projectName))
   }
 }
