@@ -1,5 +1,7 @@
 # Jason's CLI Template
 
+[简体中文](README-ZH.md)
+
 ## Quickly generate scaffolding through configuration
 
 ## Usage

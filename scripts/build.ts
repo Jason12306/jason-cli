@@ -1,6 +1,5 @@
 import { removeSync, copy } from 'fs-extra'
 import fg from 'fast-glob'
-import chalk from 'chalk'
 import ora from 'ora'
 
 const outdir = 'dist'
@@ -13,6 +12,8 @@ async function bootstrap() {
   await Promise.all([
     copy('package.json', `${outdir}/package.json`),
     copy('templates', `${outdir}/templates`),
+    copy('README.md', `${outdir}/README.md`),
+    copy('README-ZH.md', `${outdir}/README-ZH.md`),
   ])
 
   const entrypoints = await fg(['src/**/*.ts', 'cli.config.ts'])
@@ -28,7 +29,7 @@ async function bootstrap() {
     minify: true, // https://github.com/oven-sh/bun/issues/5344
   })
 
-  spinner.succeed(chalk.green('Building completed!'))
+  spinner.succeed('Building completed!')
 }
 
 bootstrap()

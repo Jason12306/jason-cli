@@ -1,9 +1,10 @@
 {
-  "name": "jason-cli",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@jason12306/cli",
+  "version": "1.0.1",
+  "description": "Quickly generate scaffolding through configuration",
   "main": "",
   "type": "module",
+  "private": false,
   "bin": {
     "jason": "./src/bin/cli.js"
   },
@@ -13,8 +14,16 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cli",
+    "cli-template"
+  ],
+  "author": "jason12306",
+  "homepage": "https://github.com/Jason12306/jason-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jason12306/jason-cli"
+  },
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.4.1",

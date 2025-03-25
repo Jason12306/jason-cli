@@ -1,5 +1,7 @@
 # Jason 的 cli 模板
 
+[English](README.md)
+
 ## 通过配置快速生成脚手架
 
 ## 使用
