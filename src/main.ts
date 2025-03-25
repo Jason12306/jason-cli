@@ -1,69 +1,91 @@
 import inquirer from 'inquirer'
-import { copySync, mkdirSync, rmdirSync } from 'fs-extra'
-import path, { resolve } from 'node:path'
+import { copySync, existsSync } from 'fs-extra'
+import path from 'node:path'
 import degit from 'degit'
-import configs from './config'
-import { getTplByName, isUndef } from './utils'
+import configs from '../cli.config'
+import { clearDestDir, getTplByName, isInternalTpl } from './utils'
+import ora from 'ora'
 
-interface Answers {
-  projectName: string
-  selectedTpl: string
-}
-
-function createProjectDir(answers: Answers) {
-  mkdirSync(answers.projectName)
-}
-
-function createTemplate(answers: Answers) {
-  const dest = path.resolve(answers.projectName)
-
-  const selectedTpl = getTplByName(answers.selectedTpl)
-
-  if (selectedTpl.isInternal || isUndef(selectedTpl.isInternal)) {
-    copySync(path.resolve('templates', selectedTpl.src), dest)
+async function createProjectDir(answers: { projectName: string }) {
+  if (existsSync(answers.projectName)) {
+    const result = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'isOverride',
+        message: 'The project already exists, do you want to override it?',
+      },
+    ])
+    return result
   } else {
   }
 }
 
+async function createTemplate(answers: {
+  projectName: string
+  selectedTpl: string
+}) {
+  const dest = path.resolve(answers.projectName)
+
+  const selectedTpl = getTplByName(answers.selectedTpl)
+
+  if (isInternalTpl(selectedTpl)) {
+    copySync(path.resolve('templates', selectedTpl.src), dest)
+  } else {
+    // Is remote template
+    const emitter = degit(selectedTpl.src, {
+      mode: 'git',
+    })
+
+    emitter.on('info', (info) => {
+      console.log('\n', info.message)
+    })
+
+    emitter.on('warn', (info) => {
+      console.log('\n', info.message)
+    })
+
+    await emitter.clone(dest)
+  }
+}
+
 export async function run() {
-  const answers = await inquirer.prompt([
+  const projectNameAnswers = await inquirer.prompt([
     {
       type: 'input',
       name: 'projectName',
       message: 'Please enter the project name',
     },
-    {
-      type: 'list',
-      name: 'selectedTpl',
-      message: 'Please select a project template',
-      choices: configs.templates.map((tpl) => tpl.name),
-    },
   ])
-  try {
-    console.log('\n', answers)
 
-    createProjectDir(answers)
-    createTemplate(answers)
+  try {
+    const result = await createProjectDir(projectNameAnswers)
+
+    if (!result || result.isOverride) {
+      const selectedTplAnswers = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'selectedTpl',
+          message: 'Please select a project template',
+          choices: configs.templates.map((tpl) => tpl.name),
+        },
+      ])
+
+      const spinner = ora('Is Creating the project').start()
+      // Override the project
+      clearDestDir(projectNameAnswers.projectName)
+
+      await createTemplate({
+        ...selectedTplAnswers,
+        projectName: projectNameAnswers.projectName,
+      })
+      spinner.succeed('Project created successfully')
+    } else {
+      // nothing to do
+    }
   } catch (error) {
     console.log('\n', error)
-    rmdirSync(path.resolve(answers.projectName))
+    clearDestDir(projectNameAnswers.projectName)
+    // spinner.stop()
+    process.exit()
   }
-}
-
-function test() {
-  const emitter = degit('Jason12306/jason12306', {
-    mode: 'git',
-  })
-
-  emitter.on('info', (info) => {
-    console.log('info ====>>>', info.message)
-  })
-
-  emitter.on('warn', (info) => {
-    console.log('warn ====>>>', info.message)
-  })
-
-  emitter.clone('zzz1').then((value) => {
-    console.log('done', value)
-  })
 }

@@ -1,10 +1,5 @@
-interface Template {
-  name: string
-  isInternal?: boolean
-  src: string
-}
-
-const config: { templates: Template[] } = {
+const config: { banner: string; templates: Template[] } = {
+  banner: 'Jason CLI',
   templates: [
     {
       name: 'template-foo',

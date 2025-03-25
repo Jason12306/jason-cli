@@ -5,7 +5,7 @@
   "main": "",
   "type": "module",
   "bin": {
-    "jason": "./bin/cli.js"
+    "jason": "./src/bin/cli.js"
   },
   "scripts": {
     "dev": "bun src/bin/cli.ts",
